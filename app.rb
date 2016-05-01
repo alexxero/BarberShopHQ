@@ -12,6 +12,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 get '/' do
   @barbers = Barber.order "created_at DESC"
 	erb :index
@@ -50,5 +53,5 @@ get '/contacts' do
 end
 
 post '/contacts' do
-  
+
 end
