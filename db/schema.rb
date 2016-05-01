@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160501085516) do
     t.datetime "updated_at"
   end
 
-  create_table "contact", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.text "name"
     t.text "email"
     t.text "message"
