@@ -32,6 +32,14 @@ post '/visit' do
 	@barber = params[:barber]
 	@color = params[:color]
 
+  c = Client.new
+  c.name = @username
+  c.phone = @phone
+  c.datestamp = @datetime
+  c.barber = @barber
+  c.color = @color
+  c.save
+
 	parameters = {
 			:username => "Введите имя",
 			:phone => "Введите телефон",
@@ -44,7 +52,7 @@ post '/visit' do
 		return erb :visit
 	end
 
-	erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
+	erb "OK, #{@username}, phone number #{@phone}, you are signed to #{@barber} to change a color to #{@color} at #{@datetime}"
 
 end
 
