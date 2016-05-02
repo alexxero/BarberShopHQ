@@ -7,7 +7,7 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:barbershop.db"
 
 class Client < ActiveRecord::Base
-	validates :name, presence: true
+	validates :name, presence: true, length: {minimum: 3}
 	validates :phone, presence: true
 	validates :datestamp, presence: true
 	validates :color, presence: true
@@ -25,13 +25,21 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
 
-	c = Client.new params[:client]
-	c.save
+	@c = Client.new params[:client]
+	@c.save
+
+  if @c.save
+		erb "<h3>Спасибо, вы записаны!</h3>"
+  else
+    @error = @c.errors.full_messages.first
+		erb :visit
+  end
 
 	# parameters = {
 	# 		:username => "Введите имя",
@@ -45,7 +53,7 @@ post '/visit' do
 	# 	return erb :visit
 	# end
 
-	erb "<h3>Спасибо, вы записаны!</h3>"
+
 
 end
 
