@@ -26,33 +26,22 @@ end
 
 post '/visit' do
 
-	@username = params[:username]
-	@phone = params[:phone]
-	@datetime = params[:datetime]
-	@barber = params[:barber]
-	@color = params[:color]
+	c = Client.new params[:client]
+	c.save
 
-  c = Client.new
-  c.name = @username
-  c.phone = @phone
-  c.datestamp = @datetime
-  c.barber = @barber
-  c.color = @color
-  c.save
- 
-	parameters = {
-			:username => "Введите имя",
-			:phone => "Введите телефон",
-			:datetime => "Введите дату"
-	}
+	# parameters = {
+	# 		:username => "Введите имя",
+	# 		:phone => "Введите телефон",
+	# 		:datetime => "Введите дату"
+	# }
+  #
+	# @error = parameters.select {|key, _| params[key] == ''}.values.join(", ")
+  #
+	# if @error != ""
+	# 	return erb :visit
+	# end
 
-	@error = parameters.select {|key, _| params[key] == ''}.values.join(", ")
-
-	if @error != ""
-		return erb :visit
-	end
-
-	erb "OK, #{@username}, phone number #{@phone}, you are signed to #{@barber} to change a color to #{@color} at #{@datetime}"
+	erb "OK"
 
 end
 
