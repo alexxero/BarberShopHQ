@@ -39,7 +39,7 @@ post '/visit' do
   c.barber = @barber
   c.color = @color
   c.save
-
+ 
 	parameters = {
 			:username => "Введите имя",
 			:phone => "Введите телефон",
