@@ -1,7 +1,15 @@
+<script>
+  $(document).ready(function() {
+    $("#target").click(function(){
+      $("body").css("background-color", "<%= @client.color %>");
+    });
+  });
+</script>
+
 <h3>Client page</h3>
 <p>Name: <%= @client.name %></p>
 <p>Phone: <%= @client.phone %></p>
 <p>Visit date: <%= @client.datestamp %></p>
 <p>Barber: <%= @client.barber %></p>
-<p>Color:  <%= @client.color %></p> <button style="background-color: <%= @client.color %>">Color example</button>
+<p>Color:  <%= @client.color %></p> <button id="target" style="background-color: <%= @client.color %>">Color example</button>
 
